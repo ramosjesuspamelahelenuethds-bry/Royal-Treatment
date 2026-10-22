@@ -1,0 +1,2336 @@
+
+/* =====================================================
+   ROYAL TREATMENT SPA
+   Pet Boutique | Diseño cálido, elegante y animado
+   ===================================================== */
+
+/* 1. VARIABLES DE COLOR Y ESTILO */
+
+:root {
+    --cream: #fff8ef;
+    --cream-dark: #f8ecdc;
+    --peach: #f5d1bd;
+    --peach-light: #ffe9dc;
+    --pink: #f4dce0;
+    --pink-dark: #dfadb4;
+    --terracotta: #bd7057;
+    --terracotta-dark: #92513e;
+    --brown: #65483d;
+    --brown-light: #927569;
+    --text: #59463e;
+    --white: #ffffff;
+    --gold: #d5a45e;
+    --green: #788c70;
+
+    --font-title: "Pacifico", cursive;
+    --font-elegant: "Playfair Display", serif;
+    --font-body: "Quicksand", sans-serif;
+
+    --radius-small: 12px;
+    --radius-medium: 22px;
+    --radius-large: 34px;
+
+    --shadow-soft: 0 8px 28px rgba(112, 72, 53, 0.09);
+    --shadow-hover: 0 18px 38px rgba(112, 72, 53, 0.17);
+
+    --transition: 0.3s ease;
+}
+
+
+/* 2. CONFIGURACIÓN GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background-color: var(--cream);
+    background-image:
+        radial-gradient(
+            circle at 8% 12%,
+            rgba(245, 209, 189, 0.22),
+            transparent 23%
+        ),
+        radial-gradient(
+            circle at 90% 35%,
+            rgba(244, 220, 224, 0.24),
+            transparent 24%
+        );
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font-family: var(--font-body);
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 4px;
+}
+
+::selection {
+    background: var(--pink-dark);
+    color: var(--brown);
+}
+
+
+/* 3. BARRA DE ANUNCIO */
+
+.announcement-bar {
+    position: relative;
+    z-index: 20;
+    padding: 7px 16px;
+    text-align: center;
+    color: var(--white);
+    background: var(--terracotta);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+}
+
+.announcement-bar p {
+    animation: announcementGlow 4s ease-in-out infinite;
+}
+
+@keyframes announcementGlow {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.78;
+    }
+}
+
+
+/* 4. ENCABEZADO Y NAVEGACIÓN */
+
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 14px 5%;
+    background: rgba(255, 248, 239, 0.94);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(189, 112, 87, 0.13);
+    box-shadow: 0 4px 20px rgba(112, 72, 53, 0.04);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    color: var(--terracotta);
+    background: var(--peach-light);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    animation: pawBounce 3s ease-in-out infinite;
+}
+
+@keyframes pawBounce {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(8deg) scale(1.07);
+    }
+}
+
+.brand-name {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    line-height: 1.35;
+    color: var(--terracotta-dark);
+}
+
+.brand-name small {
+    margin-top: 3px;
+    font-family: var(--font-body);
+    font-size: 0.57rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-align: center;
+    color: var(--brown-light);
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 21px;
+}
+
+.navigation a {
+    position: relative;
+    padding: 7px 0;
+    font-size: 0.84rem;
+    font-weight: 700;
+    transition: color var(--transition);
+}
+
+.navigation a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--terracotta);
+    border-radius: 5px;
+    transition: width var(--transition);
+}
+
+.navigation a:hover {
+    color: var(--terracotta);
+}
+
+.navigation a:hover::after {
+    width: 100%;
+}
+
+.cart-button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 16px;
+    color: var(--white);
+    background: var(--terracotta);
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    transition: transform var(--transition),
+                background var(--transition);
+}
+
+.cart-button:hover {
+    background: var(--terracotta-dark);
+    transform: translateY(-3px);
+}
+
+#cartCount {
+    display: grid;
+    place-items: center;
+    min-width: 23px;
+    height: 23px;
+    padding: 0 5px;
+    color: var(--terracotta-dark);
+    background: var(--white);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.menu-toggle {
+    display: none;
+    width: 43px;
+    height: 43px;
+    border: 1px solid var(--peach);
+    border-radius: 12px;
+    background: var(--white);
+    color: var(--terracotta-dark);
+    font-size: 1.3rem;
+}
+
+
+/* 5. DECORACIONES FLOTANTES */
+
+.decor {
+    position: fixed;
+    z-index: -1;
+    color: var(--terracotta);
+    opacity: 0.15;
+    pointer-events: none;
+    animation: floatDecor 7s ease-in-out infinite;
+}
+
+.decor-one {
+    top: 25%;
+    left: 2%;
+    font-size: 3.5rem;
+}
+
+.decor-two {
+    top: 64%;
+    right: 2%;
+    font-size: 4rem;
+    animation-delay: -2s;
+}
+
+.decor-three {
+    top: 80%;
+    left: 4%;
+    font-size: 3.5rem;
+    animation-delay: -4s;
+}
+
+@keyframes floatDecor {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+
+    50% {
+        transform: translateY(-24px) rotate(8deg);
+    }
+}
+
+
+/* 6. PORTADA PRINCIPAL */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    min-height: 650px;
+    padding: 85px 8%;
+    overflow: hidden;
+    background: var(--peach);
+    border-radius: 0 0 55px 55px;
+}
+
+.hero-background {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    overflow: hidden;
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    animation: heroZoom 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.09);
+    }
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 245, 233, 0.97) 0%,
+            rgba(255, 240, 225, 0.91) 40%,
+            rgba(255, 240, 225, 0.52) 67%,
+            rgba(255, 240, 225, 0.12) 100%
+        );
+}
+
+.hero-content {
+    max-width: 670px;
+    animation: fadeUp 1s ease both;
+}
+
+.hero-label,
+.eyebrow {
+    display: inline-block;
+    color: var(--terracotta);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero-label {
+    margin-bottom: 18px;
+    padding: 9px 16px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(189, 112, 87, 0.17);
+    border-radius: 30px;
+}
+
+.hero h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--brown);
+    font-family: var(--font-title);
+    font-size: clamp(2.8rem, 6vw, 5.4rem);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -1px;
+}
+
+.hero h1 span {
+    margin-top: -5px;
+    color: var(--terracotta);
+    font-size: 1.2em;
+    text-shadow: 3px 4px 0 rgba(255, 255, 255, 0.6);
+}
+
+.hero-subtitle {
+    margin-top: 23px;
+    font-family: var(--font-elegant);
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.hero-description {
+    max-width: 540px;
+    margin-top: 12px;
+    color: var(--brown-light);
+    font-size: 1rem;
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 13px 23px;
+    border: 2px solid transparent;
+    border-radius: 30px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-align: center;
+    transition: transform var(--transition),
+                background var(--transition),
+                box-shadow var(--transition);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-primary {
+    color: var(--white);
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+}
+
+.btn-primary:hover {
+    background: var(--terracotta-dark);
+    border-color: var(--terracotta-dark);
+}
+
+.btn-secondary {
+    color: var(--terracotta-dark);
+    background: rgba(255, 255, 255, 0.7);
+    border-color: var(--terracotta);
+}
+
+.btn-secondary:hover {
+    background: var(--white);
+}
+
+.hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 22px;
+    margin-top: 28px;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.hero-sticker {
+    position: absolute;
+    right: 9%;
+    bottom: 12%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 135px;
+    height: 135px;
+    padding: 12px;
+    color: var(--terracotta-dark);
+    background: rgba(255, 248, 239, 0.94);
+    border: 2px dashed var(--pink-dark);
+    border-radius: 50%;
+    box-shadow: var(--shadow-soft);
+    transform: rotate(9deg);
+    animation: stickerFloat 4s ease-in-out infinite;
+}
+
+.hero-sticker span {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.hero-sticker strong {
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    font-weight: 400;
+}
+
+.hero-sticker small {
+    font-size: 0.66rem;
+}
+
+@keyframes stickerFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(8deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(2deg);
+    }
+}
+
+
+/* 7. ESPACIADO Y TÍTULOS */
+
+.section-container {
+    width: min(1200px, 90%);
+    margin-inline: auto;
+}
+
+.section-heading {
+    max-width: 750px;
+    margin: 0 auto 42px;
+    text-align: center;
+}
+
+.section-heading .eyebrow {
+    margin-bottom: 10px;
+}
+
+.section-title {
+    margin-bottom: 14px;
+    color: var(--brown);
+    font-family: var(--font-elegant);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.section-title span {
+    color: var(--terracotta);
+    font-family: var(--font-title);
+    font-weight: 400;
+}
+
+.section-heading > p {
+    color: var(--brown-light);
+    font-size: 0.97rem;
+}
+
+section[id] {
+    scroll-margin-top: 100px;
+}
+
+
+/* 8. BENEFICIOS */
+
+.benefits {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: -38px;
+    margin-bottom: 95px;
+}
+
+.benefit-card {
+    padding: 26px 18px;
+    text-align: center;
+    background: var(--white);
+    border: 1px solid rgba(189, 112, 87, 0.1);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-soft);
+    transition: transform var(--transition),
+                box-shadow var(--transition);
+}
+
+.benefit-card:hover {
+    transform: translateY(-9px);
+    box-shadow: var(--shadow-hover);
+}
+
+.benefit-card > span {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 2.1rem;
+    transition: transform var(--transition);
+}
+
+.benefit-card:hover > span {
+    transform: scale(1.2) rotate(-8deg);
+}
+
+.benefit-card h3 {
+    margin-bottom: 7px;
+    font-family: var(--font-elegant);
+    font-size: 1.08rem;
+}
+
+.benefit-card p {
+    color: var(--brown-light);
+    font-size: 0.81rem;
+}
+
+
+/* 9. PRESENTACIÓN DEL NEGOCIO */
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 75px;
+    padding-top: 10px;
+    padding-bottom: 100px;
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-image > img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-hover);
+    transition: transform 0.5s ease;
+}
+
+.about-image:hover > img {
+    transform: scale(1.02) rotate(-1deg);
+}
+
+.image-caption {
+    position: absolute;
+    right: -18px;
+    bottom: 28px;
+    max-width: 85%;
+    padding: 15px 21px;
+    color: var(--brown);
+    background: var(--white);
+    border-radius: 17px;
+    box-shadow: var(--shadow-soft);
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+.image-caption span {
+    color: var(--terracotta);
+    font-size: 1.3rem;
+}
+
+.about-content .eyebrow {
+    margin-bottom: 15px;
+}
+
+.about-content .section-title {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+}
+
+.about-content > p {
+    margin-bottom: 15px;
+    color: var(--brown-light);
+    font-size: 0.96rem;
+}
+
+.about-list {
+    display: grid;
+    gap: 10px;
+    margin: 23px 0 27px;
+    list-style: none;
+}
+
+.about-list li {
+    font-size: 0.91rem;
+    font-weight: 700;
+}
+
+.about-list li::first-letter {
+    color: var(--terracotta);
+}
+
+
+/* 10. CATEGORÍAS */
+
+.categories {
+    padding-bottom: 105px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.category-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 24px;
+    overflow: hidden;
+    color: var(--brown);
+    background: var(--white);
+    border: 1px solid rgba(189, 112, 87, 0.13);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    transition: transform var(--transition),
+                box-shadow var(--transition);
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.category-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.category-card:hover img {
+    transform: scale(1.07);
+}
+
+.category-card > span {
+    margin-top: 20px;
+    font-family: var(--font-elegant);
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.category-card > small {
+    margin-top: 4px;
+    color: var(--brown-light);
+    font-size: 0.82rem;
+}
+
+
+/* 11. CATÁLOGO */
+
+.catalog {
+    padding-top: 90px;
+    padding-bottom: 100px;
+    border-top: 1px solid rgba(189, 112, 87, 0.12);
+}
+
+.catalog-tools {
+    display: grid;
+    grid-template-columns: minmax(220px, 2fr) repeat(3, minmax(140px, 1fr));
+    gap: 13px;
+    margin-bottom: 23px;
+    padding: 20px;
+    background: var(--white);
+    border: 1px solid rgba(189, 112, 87, 0.12);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-soft);
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    padding: 0 13px;
+    background: var(--cream);
+    border: 1px solid var(--peach);
+    border-radius: 12px;
+}
+
+.search-box > span {
+    color: var(--terracotta);
+    font-size: 1.6rem;
+}
+
+.search-box input {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 0.82rem;
+}
+
+.search-box input:focus-visible {
+    outline: none;
+}
+
+.catalog-tools select,
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 13px;
+    color: var(--text);
+    background: var(--cream);
+    border: 1px solid var(--peach);
+    border-radius: 12px;
+    outline: none;
+    font-size: 0.82rem;
+}
+
+.catalog-tools select:focus,
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 3px rgba(189, 112, 87, 0.1);
+}
+
+.catalog-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 22px;
+    color: var(--brown-light);
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.text-button {
+    padding: 7px 12px;
+    color: var(--terracotta-dark);
+    background: transparent;
+    border: none;
+    font-weight: 800;
+}
+
+.text-button:hover {
+    text-decoration: underline;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 23px;
+    align-items: stretch;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid rgba(189, 112, 87, 0.13);
+    border-radius: 21px;
+    box-shadow: var(--shadow-soft);
+    animation: cardAppear 0.45s ease both;
+    transition: transform var(--transition),
+                box-shadow var(--transition);
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--shadow-hover);
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-image-wrap {
+    position: relative;
+    height: 205px;
+    overflow: hidden;
+    background: var(--peach-light);
+}
+
+.product-image-wrap > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.55s ease;
+}
+
+.product-card:hover .product-image-wrap > img {
+    transform: scale(1.08);
+}
+
+.product-category {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    max-width: calc(100% - 20px);
+    padding: 6px 10px;
+    overflow: hidden;
+    color: var(--brown);
+    background: rgba(255, 248, 239, 0.95);
+    border-radius: 30px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.product-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 6px 10px;
+    color: var(--white);
+    background: var(--terracotta);
+    border-radius: 30px;
+    font-size: 0.65rem;
+    font-weight: 800;
+}
+
+.product-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 18px;
+}
+
+.pet-label {
+    align-self: flex-start;
+    margin-bottom: 7px;
+    padding: 4px 9px;
+    color: var(--green);
+    background: #edf2e8;
+    border-radius: 20px;
+    font-size: 0.67rem;
+    font-weight: 800;
+}
+
+.product-info h3 {
+    margin-bottom: 7px;
+    color: var(--brown);
+    font-family: var(--font-elegant);
+    font-size: 1.08rem;
+    line-height: 1.4;
+}
+
+.product-info > p {
+    flex: 1;
+    margin-bottom: 18px;
+    color: var(--brown-light);
+    font-size: 0.79rem;
+    line-height: 1.7;
+}
+
+.product-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 13px;
+    border-top: 1px solid var(--cream-dark);
+}
+
+.product-price {
+    color: var(--terracotta-dark);
+    font-size: 1.08rem;
+    font-weight: 800;
+}
+
+.add-to-cart {
+    padding: 9px 12px;
+    color: var(--white);
+    background: var(--terracotta);
+    border: none;
+    border-radius: 22px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    transition: background var(--transition),
+                transform var(--transition);
+}
+
+.add-to-cart:hover {
+    background: var(--terracotta-dark);
+    transform: scale(1.04);
+}
+
+.empty-message {
+    padding: 45px 15px;
+    color: var(--brown-light);
+    background: var(--white);
+    border: 1px dashed var(--pink-dark);
+    border-radius: var(--radius-medium);
+    text-align: center;
+}
+
+.empty-message[hidden],
+.modal-overlay[hidden] {
+    display: none !important;
+}
+
+.catalog-footer {
+    margin-top: 40px;
+    color: var(--terracotta);
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+
+/* 12. SERVICIOS DE PELUQUERÍA */
+
+.services {
+    padding: 100px 0;
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(255, 255, 255, 0.75),
+            transparent 30%
+        ),
+        linear-gradient(135deg, #f9e8dc, #f6dfe0);
+    border-radius: 50px;
+}
+
+.service-notice {
+    margin: -10px auto 32px;
+    padding: 16px 22px;
+    color: var(--brown);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(189, 112, 87, 0.15);
+    border-radius: 16px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.haircut-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.haircut-card {
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid rgba(189, 112, 87, 0.13);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-soft);
+    transition: transform var(--transition),
+                box-shadow var(--transition);
+}
+
+.haircut-card:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--shadow-hover);
+}
+
+.haircut-card > img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.haircut-card:hover > img {
+    transform: scale(1.05);
+}
+
+.haircut-content {
+    padding: 23px;
+}
+
+.service-number {
+    display: inline-block;
+    margin-bottom: 9px;
+    color: var(--terracotta);
+    font-size: 0.69rem;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+.haircut-content h3 {
+    margin-bottom: 9px;
+    font-family: var(--font-elegant);
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+.haircut-content > p {
+    min-height: 55px;
+    margin-bottom: 12px;
+    color: var(--brown-light);
+    font-size: 0.84rem;
+}
+
+.haircut-content > small {
+    display: block;
+    color: var(--green);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.haircut-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 19px;
+    padding-top: 16px;
+    border-top: 1px solid var(--cream-dark);
+}
+
+.haircut-bottom strong {
+    color: var(--terracotta-dark);
+    font-size: 0.98rem;
+}
+
+.book-service {
+    padding: 9px 13px;
+    color: var(--terracotta-dark);
+    background: var(--peach-light);
+    border: 1px solid var(--peach);
+    border-radius: 25px;
+    font-size: 0.77rem;
+    font-weight: 800;
+    transition: color var(--transition),
+                background var(--transition);
+}
+
+.book-service:hover {
+    color: var(--white);
+    background: var(--terracotta);
+}
+
+
+/* 13. GALERÍA DE IMÁGENES */
+
+.gallery {
+    padding-top: 105px;
+    padding-bottom: 105px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 19px;
+}
+
+.gallery-grid a {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    background: var(--peach);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-soft);
+}
+
+.gallery-grid a::after {
+    content: "♡";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--white);
+    background: rgba(101, 72, 61, 0.24);
+    font-size: 3.3rem;
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.gallery-grid a:hover::after {
+    opacity: 1;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-grid a:hover img {
+    transform: scale(1.1) rotate(1deg);
+}
+
+
+/* 14. FORMULARIO DE RESERVAS */
+
+.booking-section {
+    padding: 95px 0;
+    background: linear-gradient(145deg, #f4dfd4, #f8e9e6);
+    border-radius: 50px;
+}
+
+.booking-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: start;
+    gap: 65px;
+}
+
+.booking-info {
+    position: sticky;
+    top: 130px;
+}
+
+.booking-info .eyebrow {
+    margin-bottom: 14px;
+}
+
+.booking-info .section-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.booking-info > p {
+    color: var(--brown-light);
+}
+
+.booking-perks {
+    display: grid;
+    gap: 12px;
+    margin-top: 27px;
+}
+
+.booking-perks p {
+    padding: 13px 15px;
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(189, 112, 87, 0.1);
+    border-radius: 12px;
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 34px;
+    background: var(--white);
+    border: 1px solid rgba(189, 112, 87, 0.12);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-hover);
+}
+
+.booking-form label {
+    margin-top: 5px;
+    font-size: 0.83rem;
+    font-weight: 800;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    padding: 13px 15px;
+    font-size: 0.87rem;
+}
+
+.booking-form textarea {
+    resize: vertical;
+    min-height: 95px;
+}
+
+.booking-form .btn {
+    margin-top: 13px;
+}
+
+.form-note {
+    margin-top: 10px;
+    color: var(--brown-light);
+    font-size: 0.72rem;
+    text-align: center;
+}
+
+
+/* 15. CONTACTO */
+
+.contact {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.contact-card {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    align-items: stretch;
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid rgba(189, 112, 87, 0.13);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-hover);
+}
+
+.contact-content {
+    align-self: center;
+    padding: clamp(28px, 5vw, 55px);
+}
+
+.contact-content .eyebrow {
+    margin-bottom: 14px;
+}
+
+.contact-content .section-title {
+    font-size: clamp(2rem, 3.5vw, 2.7rem);
+}
+
+.contact-content > p {
+    margin-bottom: 23px;
+    color: var(--brown-light);
+}
+
+.contact-details {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.contact-details p {
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.contact-image {
+    min-height: 400px;
+    overflow: hidden;
+    background: var(--peach);
+}
+
+.contact-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.contact-card:hover .contact-image img {
+    transform: scale(1.04);
+}
+
+
+/* 16. MODAL DE LA BOLSA DE COMPRAS */
+
+.modal-overlay {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+    background: rgba(57, 38, 31, 0.57);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    animation: fadeIn 0.25s ease;
+}
+
+.cart-modal {
+    position: relative;
+    width: min(550px, 100%);
+    max-height: 90vh;
+    padding: 32px;
+    overflow-y: auto;
+    background: var(--cream);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: var(--radius-large);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.22);
+    animation: modalPop 0.3s ease;
+}
+
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    display: grid;
+    place-items: center;
+    width: 39px;
+    height: 39px;
+    color: var(--terracotta-dark);
+    background: var(--peach-light);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.7rem;
+    transition: transform var(--transition);
+}
+
+.modal-close:hover {
+    transform: rotate(90deg);
+}
+
+.cart-modal h2 {
+    padding-right: 30px;
+    color: var(--brown);
+    font-family: var(--font-title);
+    font-size: 1.65rem;
+    font-weight: 400;
+}
+
+.cart-modal > p {
+    margin-top: 7px;
+    color: var(--brown-light);
+    font-size: 0.84rem;
+}
+
+.cart-items {
+    display: grid;
+    gap: 14px;
+    max-height: 42vh;
+    margin: 23px 0;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 12px;
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 15px;
+}
+
+.cart-item > img {
+    flex-shrink: 0;
+    width: 68px;
+    height: 68px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.cart-item-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.cart-item-info > strong {
+    font-size: 0.86rem;
+    line-height: 1.4;
+}
+
+.cart-item-info > span {
+    margin-top: 4px;
+    color: var(--terracotta);
+    font-size: 0.77rem;
+    font-weight: 800;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.quantity-controls button {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    color: var(--terracotta-dark);
+    background: var(--peach-light);
+    border: none;
+    border-radius: 50%;
+    font-weight: 800;
+}
+
+.quantity-controls span {
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.remove-item {
+    align-self: flex-start;
+    padding: 4px 8px;
+    color: var(--terracotta-dark);
+    background: transparent;
+    border: none;
+    font-size: 1.35rem;
+}
+
+.empty-cart {
+    padding: 30px 10px;
+    color: var(--brown-light);
+    text-align: center;
+}
+
+.cart-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--pink-dark);
+    border-bottom: 1px solid var(--pink-dark);
+    font-weight: 700;
+}
+
+.cart-total strong {
+    color: var(--terracotta-dark);
+    font-size: 1.3rem;
+}
+
+.cart-modal > .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/* 17. MENSAJES EMERGENTES */
+
+.toast {
+    position: fixed;
+    z-index: 1500;
+    right: 25px;
+    bottom: 25px;
+    max-width: min(360px, calc(100vw - 32px));
+    padding: 15px 22px;
+    color: var(--white);
+    background: var(--brown);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: var(--shadow-hover);
+    font-size: 0.86rem;
+    font-weight: 700;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity var(--transition),
+                transform var(--transition);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* 18. PIE DE PÁGINA */
+
+.footer {
+    padding: 55px 20px 25px;
+    color: #fdf3e9;
+    background: #65483d;
+    text-align: center;
+}
+
+.footer-brand {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #ffe0ce;
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    transition: color var(--transition);
+}
+
+.footer-brand:hover {
+    color: var(--white);
+}
+
+.footer > p {
+    color: rgba(255, 243, 233, 0.77);
+    font-size: 0.85rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin: 23px 0;
+}
+
+.footer-links a {
+    font-size: 0.82rem;
+    font-weight: 700;
+    transition: color var(--transition);
+}
+
+.footer-links a:hover {
+    color: #ffd4bc;
+}
+
+.copyright {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.75rem !important;
+}
+
+
+/* 19. ANIMACIONES DE ENTRADA */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* 20. PANTALLAS MEDIANAS */
+
+@media (max-width: 1100px) {
+
+    .main-header {
+        gap: 15px;
+        padding-inline: 3%;
+    }
+
+    .navigation {
+        gap: 13px;
+    }
+
+    .navigation a {
+        font-size: 0.77rem;
+    }
+
+    .brand-name {
+        font-size: 0.95rem;
+    }
+
+    .brand-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .catalog-tools {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .hero-sticker {
+        right: 5%;
+        bottom: 8%;
+    }
+
+    .about {
+        gap: 45px;
+    }
+}
+
+
+/* 21. TABLETAS Y MENÚ DESPLEGABLE */
+
+@media (max-width: 850px) {
+
+    .main-header {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px 5%;
+    }
+
+    .brand {
+        margin-right: auto;
+    }
+
+    .menu-toggle {
+        display: grid;
+        place-items: center;
+        order: 2;
+    }
+
+    .cart-button {
+        order: 1;
+    }
+
+    .navigation {
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0 5%;
+        overflow: hidden;
+        background: var(--cream);
+        border-bottom: 1px solid var(--peach);
+        box-shadow: var(--shadow-soft);
+        max-height: 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: max-height 0.35s ease,
+                    opacity 0.25s ease,
+                    visibility 0.25s ease,
+                    padding 0.25s ease;
+    }
+
+    .navigation.active {
+        max-height: 440px;
+        padding-block: 12px 18px;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .navigation a {
+        padding: 13px 4px;
+        border-bottom: 1px solid rgba(189, 112, 87, 0.1);
+        font-size: 0.9rem;
+    }
+
+    .navigation a:last-child {
+        border-bottom: none;
+    }
+
+    .hero {
+        min-height: 600px;
+        padding: 75px 6%;
+    }
+
+    .hero-sticker {
+        right: 4%;
+        bottom: 5%;
+        width: 105px;
+        height: 105px;
+    }
+
+    .hero-sticker strong {
+        font-size: 0.9rem;
+    }
+
+    .benefits {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-bottom: 75px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding-bottom: 80px;
+    }
+
+    .about-image {
+        max-width: 600px;
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .about-image > img {
+        height: 400px;
+    }
+
+    .about-content {
+        max-width: 700px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .haircut-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-grid a {
+        height: 250px;
+    }
+
+    .booking-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .booking-info {
+        position: static;
+    }
+
+    .booking-form {
+        width: 100%;
+    }
+
+    .contact-card {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-image {
+        order: -1;
+        min-height: 320px;
+        max-height: 390px;
+    }
+
+    .contact-image img {
+        min-height: 320px;
+        max-height: 390px;
+    }
+}
+
+
+/* 22. TELÉFONOS */
+
+@media (max-width: 520px) {
+
+    body {
+        font-size: 0.94rem;
+    }
+
+    .announcement-bar {
+        padding: 6px 10px;
+        font-size: 0.68rem;
+    }
+
+    .main-header {
+        padding: 10px 4%;
+        gap: 9px;
+    }
+
+    .brand {
+        gap: 7px;
+    }
+
+    .brand-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+    }
+
+    .brand-name {
+        font-size: 0.83rem;
+    }
+
+    .brand-name small {
+        font-size: 0.47rem;
+        letter-spacing: 1.4px;
+    }
+
+    .cart-button {
+        gap: 6px;
+        padding: 9px 10px;
+        font-size: 0.7rem;
+    }
+
+    #cartCount {
+        min-width: 20px;
+        height: 20px;
+        font-size: 0.68rem;
+    }
+
+    .menu-toggle {
+        width: 38px;
+        height: 38px;
+        font-size: 1.15rem;
+    }
+
+    .hero {
+        min-height: 630px;
+        align-items: flex-start;
+        padding: 65px 6% 145px;
+        border-radius: 0 0 32px 32px;
+    }
+
+    .hero::before {
+        background: linear-gradient(
+            90deg,
+            rgba(255, 245, 233, 0.96),
+            rgba(255, 240, 225, 0.83)
+        );
+    }
+
+    .hero-background img {
+        object-position: 57% center;
+    }
+
+    .hero-label {
+        padding: 8px 11px;
+        font-size: 0.64rem;
+        letter-spacing: 1px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.55rem, 11vw, 3.8rem);
+    }
+
+    .hero-subtitle {
+        margin-top: 17px;
+        font-size: 1.1rem;
+    }
+
+    .hero-description {
+        font-size: 0.88rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 23px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-features {
+        gap: 9px 13px;
+        font-size: 0.72rem;
+    }
+
+    .hero-sticker {
+        right: 6%;
+        bottom: 15px;
+        width: 92px;
+        height: 92px;
+    }
+
+    .hero-sticker span {
+        font-size: 0.55rem;
+    }
+
+    .hero-sticker strong {
+        font-size: 0.8rem;
+    }
+
+    .section-container {
+        width: 90%;
+    }
+
+    .section-heading {
+        margin-bottom: 30px;
+    }
+
+    .section-heading .eyebrow,
+    .about-content .eyebrow,
+    .booking-info .eyebrow,
+    .contact-content .eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 1.3px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .benefits {
+        gap: 12px;
+        margin-top: -25px;
+        margin-bottom: 65px;
+    }
+
+    .benefit-card {
+        padding: 20px 10px;
+        border-radius: 17px;
+    }
+
+    .benefit-card > span {
+        font-size: 1.7rem;
+    }
+
+    .benefit-card h3 {
+        font-size: 0.94rem;
+    }
+
+    .benefit-card p {
+        font-size: 0.73rem;
+        line-height: 1.5;
+    }
+
+    .about {
+        padding-bottom: 65px;
+        gap: 30px;
+    }
+
+    .about-image > img {
+        height: 300px;
+        border-radius: 23px;
+    }
+
+    .image-caption {
+        right: -5px;
+        bottom: 13px;
+        padding: 11px 12px;
+        font-size: 0.7rem;
+    }
+
+    .about-content > p {
+        font-size: 0.87rem;
+    }
+
+    .about-list li {
+        font-size: 0.82rem;
+    }
+
+    .categories {
+        padding-bottom: 70px;
+    }
+
+    .category-grid {
+        gap: 13px;
+    }
+
+    .category-card {
+        padding-bottom: 17px;
+        border-radius: 17px;
+    }
+
+    .category-card img {
+        height: 145px;
+    }
+
+    .category-card > span {
+        margin-top: 13px;
+        font-size: 1.02rem;
+    }
+
+    .category-card > small {
+        padding-inline: 5px;
+        font-size: 0.69rem;
+    }
+
+    .catalog {
+        padding-top: 65px;
+        padding-bottom: 70px;
+    }
+
+    .catalog-tools {
+        grid-template-columns: 1fr;
+        gap: 11px;
+        padding: 14px;
+        border-radius: 17px;
+    }
+
+    .catalog-tools select {
+        min-height: 45px;
+    }
+
+    .catalog-summary {
+        align-items: flex-start;
+        font-size: 0.75rem;
+    }
+
+    .text-button {
+        padding: 5px 0;
+        font-size: 0.73rem;
+        white-space: nowrap;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .product-card {
+        border-radius: 15px;
+    }
+
+    .product-image-wrap {
+        height: 145px;
+    }
+
+    .product-category {
+        left: 5px;
+        bottom: 5px;
+        max-width: calc(100% - 10px);
+        padding: 5px 7px;
+        font-size: 0.54rem;
+    }
+
+    .product-badge {
+        top: 5px;
+        right: 5px;
+        padding: 4px 6px;
+        font-size: 0.55rem;
+    }
+
+    .product-info {
+        padding: 12px 10px;
+    }
+
+    .pet-label {
+        padding: 4px 7px;
+        font-size: 0.57rem;
+    }
+
+    .product-info h3 {
+        font-size: 0.92rem;
+    }
+
+    .product-info > p {
+        font-size: 0.72rem;
+        line-height: 1.55;
+    }
+
+    .product-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .product-price {
+        font-size: 0.97rem;
+    }
+
+    .add-to-cart {
+        width: 100%;
+        padding: 9px 5px;
+        font-size: 0.72rem;
+    }
+
+    .services {
+        padding: 70px 0;
+        border-radius: 30px;
+    }
+
+    .service-notice {
+        padding: 13px;
+        font-size: 0.77rem;
+    }
+
+    .haircut-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .haircut-card {
+        border-radius: 18px;
+    }
+
+    .haircut-card > img {
+        height: 220px;
+    }
+
+    .haircut-content {
+        padding: 19px;
+    }
+
+    .haircut-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .haircut-content > p {
+        min-height: auto;
+    }
+
+    .gallery {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+    .gallery-grid {
+        gap: 12px;
+    }
+
+    .gallery-grid a {
+        height: 175px;
+        border-radius: 15px;
+    }
+
+    .booking-section {
+        padding: 70px 0;
+        border-radius: 30px;
+    }
+
+    .booking-layout {
+        gap: 28px;
+    }
+
+    .booking-form {
+        padding: 22px 17px;
+        border-radius: 22px;
+    }
+
+    .booking-form label {
+        font-size: 0.8rem;
+    }
+
+    .contact {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+    .contact-card {
+        border-radius: 23px;
+    }
+
+    .contact-content {
+        padding: 26px 20px;
+    }
+
+    .contact-image,
+    .contact-image img {
+        min-height: 250px;
+        max-height: 290px;
+    }
+
+    .contact-content > p {
+        font-size: 0.87rem;
+    }
+
+    .cart-modal {
+        padding: 25px 17px;
+        border-radius: 23px;
+    }
+
+    .cart-modal h2 {
+        font-size: 1.4rem;
+    }
+
+    .cart-item {
+        gap: 9px;
+        padding: 9px;
+    }
+
+    .cart-item > img {
+        width: 53px;
+        height: 53px;
+    }
+
+    .cart-item-info > strong {
+        font-size: 0.76rem;
+    }
+
+    .toast {
+        right: 12px;
+        bottom: 12px;
+        font-size: 0.78rem;
+    }
+
+    .footer {
+        padding-top: 42px;
+    }
+
+    .footer-brand {
+        font-size: 1.5rem;
+    }
+
+    .footer-links {
+        gap: 14px;
+    }
+}
+
+
+/* 23. ACCESIBILIDAD: REDUCIR MOVIMIENTO */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
